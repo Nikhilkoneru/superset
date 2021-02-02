@@ -70,8 +70,8 @@ const defaultProps = {
     ],
     brand: {
       path: '/superset/profile/admin/',
-      icon: '/static/assets/images/superset-logo-horiz.png',
-      alt: 'Superset',
+      icon: '/static/assets/images/acquisition.gov.png',
+      alt: 'Acquisition.Gov',
       width: '126',
     },
     navbar_right: {

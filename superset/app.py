@@ -181,6 +181,18 @@ class SupersetAppInitializer:
             DatabaseView,
             ExcelToDatabaseView,
         )
+        from superset.views.pricing_history_upload.views import (
+            PcuView,
+        )
+        from superset.views.price_comparison.views import (
+            PcView
+        )
+        from superset.views.price_negotiations.views import (
+            PnView
+        )
+        from superset.views.igce.views import (
+            IgceUploadView, IGCE
+        )
         from superset.views.datasource import Datasource
         from superset.views.dynamic_plugins import DynamicPluginsView
         from superset.views.key_value import KV
@@ -264,6 +276,41 @@ class SupersetAppInitializer:
             DashboardModelView,
             "Dashboards",
             label=__("Dashboards"),
+            icon="fa-dashboard",
+            category="",
+            category_icon="",
+        )
+        appbuilder.add_view_no_menu(IgceUploadView)
+        # Anika Systems Config
+        appbuilder.add_view(
+            IGCE,
+            "IGCE",
+            label=__("IGCE"),
+            icon="fa-dashboard",
+            href="/igce/",
+            category="",
+            category_icon="",
+        )
+        appbuilder.add_view(
+            PcView,
+            "Price Comparison",
+            label=__("Pricing Comparison"),
+            icon="fa-dashboard",
+            category="",
+            category_icon="",
+        )
+        appbuilder.add_view(
+            PnView,
+            "Price Negotiations",
+            label=__("Pricing Negotiations"),
+            icon="fa-dashboard",
+            category="",
+            category_icon="",
+        )
+        appbuilder.add_view(
+            PcuView,
+            "Pricing History Upload",
+            label=__("Pricing History Upload"),
             icon="fa-dashboard",
             category="",
             category_icon="",
