@@ -343,6 +343,7 @@ DEFAULT_FEATURE_FLAGS: Dict[str, bool] = {
     "ALERT_REPORTS": False,
     # Enable experimental feature to search for other dashboards
     "OMNIBAR": False,
+    "DASHBOARD_RBAC": False,
 }
 
 # Set the default view to card/grid view if thumbnail support is enabled.
@@ -391,7 +392,7 @@ EXTRA_CATEGORICAL_COLOR_SCHEMES: List[Dict[str, Any]] = []
 #     {
 #         "id": 'warmToHot',
 #         "description": '',
-#         "isDiverging": true
+#         "isDiverging": True,
 #         "label": 'My custom warm to hot',
 #         "colors":
 #          ['#552288', '#5AAA46', '#CC7788', '#EEDD55', '#9977BB', '#BBAA44', '#DDCCDD',

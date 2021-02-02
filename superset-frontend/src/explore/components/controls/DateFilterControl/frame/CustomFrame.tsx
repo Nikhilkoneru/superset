@@ -18,7 +18,7 @@
  */
 import React from 'react';
 import { t } from '@superset-ui/core';
-import moment, { Moment } from 'moment';
+import { Moment } from 'moment';
 import { isInteger } from 'lodash';
 import {
   Col,
@@ -36,22 +36,16 @@ import {
   MOMENT_FORMAT,
   MIDNIGHT,
 } from '../constants';
-import { customTimeRangeDecode, customTimeRangeEncode } from '../utils';
+import {
+  customTimeRangeDecode,
+  customTimeRangeEncode,
+  dttmToMoment,
+} from '../utils';
 import {
   CustomRangeKey,
   SelectOptionType,
   FrameComponentProps,
 } from '../types';
-
-const dttmToMoment = (dttm: string): Moment => {
-  if (dttm === 'now') {
-    return moment().utc().startOf('second');
-  }
-  if (dttm === 'today') {
-    return moment().utc().startOf('day');
-  }
-  return moment(dttm);
-};
 
 export function CustomFrame(props: FrameComponentProps) {
   const { customRange, matchedFlag } = customTimeRangeDecode(props.value);
@@ -136,7 +130,7 @@ export function CustomFrame(props: FrameComponentProps) {
               <DatePicker
                 showTime
                 value={dttmToMoment(sinceDatetime)}
-                onChange={(datetime: Moment) =>
+                onSelect={(datetime: Moment) =>
                   onChange('sinceDatetime', datetime.format(MOMENT_FORMAT))
                 }
                 allowClear={false}
@@ -188,7 +182,7 @@ export function CustomFrame(props: FrameComponentProps) {
               <DatePicker
                 showTime
                 value={dttmToMoment(untilDatetime)}
-                onChange={(datetime: Moment) =>
+                onSelect={(datetime: Moment) =>
                   onChange('untilDatetime', datetime.format(MOMENT_FORMAT))
                 }
                 allowClear={false}
@@ -247,7 +241,7 @@ export function CustomFrame(props: FrameComponentProps) {
                 <DatePicker
                   showTime
                   value={dttmToMoment(anchorValue)}
-                  onChange={(datetime: Moment) =>
+                  onSelect={(datetime: Moment) =>
                     onChange('anchorValue', datetime.format(MOMENT_FORMAT))
                   }
                   allowClear={false}
